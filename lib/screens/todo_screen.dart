@@ -3,6 +3,7 @@ import 'package:flutter_todo_app/models/todo.dart';
 import 'package:flutter_todo_app/screens/todo_detail_screen.dart';
 import 'package:flutter_todo_app/services/helpers/api_helpers.dart';
 import 'package:flutter_todo_app/services/remote/todo_service.dart';
+import 'package:flutter_todo_app/widgets/todo_item.dart';
 
 class TodoScreen extends StatefulWidget {
   const TodoScreen({Key? key}) : super(key: key);
@@ -56,25 +57,7 @@ class _TodoScreenState extends State<TodoScreen> {
                       builder: (_) => TodoDetailScreen(
                             id: todos[index].id,
                           ))),
-              child: Container(
-                //height: 200,
-                padding: EdgeInsets.all(4.0),
-                margin: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0)),
-                child: ListTile(
-                  leading: CircleAvatar(
-                      backgroundColor: Colors.green.withOpacity(0.2),
-                      radius: 16.0,
-                      child: Icon(
-                        Icons.book,
-                        color: Colors.green,
-                      )),
-                  title: Text(todos[index].id.toString()),
-                  subtitle: Text(todos[index].title!),
-                ),
-              ),
+              child: TodoItem(todo: todos[index]),
             );
           }),
     );
